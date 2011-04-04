@@ -52,6 +52,10 @@ Creating new transaction in controller:
     @transaction = Payments['bank'].new_transaction(:amount => 100, :desc => 'Abonament', :client_ip => request.remote_addr, :js => '0')
   end
 
+  Important!
+  According to api changes http://serwis.platnosci.pl/uslugi_mobilne/zmiany_w_api_platnoscipl_dla_sms_premium_/
+  since 1.04.2011, parameter :amount_netto is necessary for sms(text message) payments
+
 Rendering payment form:
 
   - form_tag @transaction.new_url do

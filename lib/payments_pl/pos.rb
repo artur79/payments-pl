@@ -101,8 +101,8 @@ module Payments
     def verify(t)
       sig = nil
       if t.trans_status
-       logger.info @type.inspect
         if @type == 'sms_premium'
+          #changes according to http://serwis.platnosci.pl/uslugi_mobilne/zmiany_w_api_platnoscipl_dla_sms_premium_/
         	sig = encrypt(t.trans_pos_id, t.trans_session_id, t.trans_order_id, t.trans_status, t.trans_amount, t.trans_amount_netto, t.trans_desc, t.trans_ts, @key2)
         else
           sig = encrypt(t.trans_pos_id, t.trans_session_id, t.trans_order_id, t.trans_status, t.trans_amount, t.trans_desc, t.trans_ts, @key2)

@@ -101,7 +101,12 @@ module Payments
     def verify(t)
       sig = nil
       if t.trans_status
-        sig = encrypt(t.trans_pos_id, t.trans_session_id, t.trans_order_id, t.trans_status, t.trans_amount, t.trans_desc, t.trans_ts, @key2)
+       logger.info @type.inspect
+        if @type == 'sms_premium'
+        	sig = encrypt(t.trans_pos_id, t.trans_session_id, t.trans_order_id, t.trans_status, t.trans_amount, t.trans_amount_netto, t.trans_desc, t.trans_ts, @key2)
+        else
+          sig = encrypt(t.trans_pos_id, t.trans_session_id, t.trans_order_id, t.trans_status, t.trans_amount, t.trans_desc, t.trans_ts, @key2)
+        end
       else
         sig = encrypt(t.trans_pos_id, t.trans_session_id, t.trans_ts, @key2)
       end

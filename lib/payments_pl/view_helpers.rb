@@ -3,7 +3,7 @@ module Payments
     def transaction_hidden_fields(transaction)
       html = ""
 
-      %w(pos_id pos_auth_key pay_type session_id amount desc
+      %w(pos_id pos_auth_key pay_type session_id amount amount_netto desc
       order_id desc2 trs_desc first_name last_name street street_hn
       street_an city post_code country email phone language client_ip
       js payback_login sig ts
